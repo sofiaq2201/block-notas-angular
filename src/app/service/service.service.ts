@@ -15,4 +15,8 @@ export class ServiceService {
   getNotas() {
     return this.http.get<BlockNota[]>(this.url);
   }
+
+  createNote(blocknota: BlockNota){
+    return this.http.post<BlockNota>(this.url, blocknota);
+  }
 }

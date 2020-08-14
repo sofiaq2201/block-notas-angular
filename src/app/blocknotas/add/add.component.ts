@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceService } from '../../service/service.service';
+import { Router } from '@angular/router';
+import { BlockNota } from '../../modelo/BlockNota';
 
 @Component({
   selector: 'app-add',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:ServiceService, private router:Router) { }
 
   ngOnInit() {
+  }
+  blocknota: BlockNota = new BlockNota;
+
+  saveNote(blocknota: BlockNota){
+    if(!blocknota.title){
+      blocknota.title = "";
+    }
+    this.service.createNote(blocknota)
+      .subscribe(data => { 
+        alert("se agrego con exito");
+        this.router.navigate(["listar"]);
+      })
   }
 
 }

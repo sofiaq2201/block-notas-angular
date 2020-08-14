@@ -1,1 +1,21 @@
-<p>add works!</p>
+<div class="container col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h3>Agregar nota</h3>
+        </div>
+        <div class="card-body">
+            <form action="">
+                <div class="form-group">
+                    <label for="title">Titulo</label>
+                    <input type="text" [(ngModel)]="blocknota.title" name="title" id="" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="description">Descripcion</label>
+                    <textarea [(ngModel)]="blocknota.description" name="description" id="" class="form-control">
+                    </textarea>
+                </div>
+                <input (click)="saveNote(blocknota)" type="submit" value="Guardar" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
