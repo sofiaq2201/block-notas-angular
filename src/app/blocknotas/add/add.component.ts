@@ -14,7 +14,7 @@ export class AddComponent implements OnInit {
 
   ngOnInit() {
   }
-  blocknota: BlockNota = new BlockNota;
+  blocknota: BlockNota = new BlockNota();
 
   saveNote(blocknota: BlockNota){
     if(!blocknota.title){
@@ -26,5 +26,6 @@ export class AddComponent implements OnInit {
         this.router.navigate(["listar"]);
       })
   }
+  
 
 }

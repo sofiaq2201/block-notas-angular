@@ -14,10 +14,15 @@ export class ListarComponent implements OnInit {
   constructor(private http:ServiceService, private router:Router) { }
 
   ngOnInit() {
-    this.http.getNotas().subscribe(data=>{
-         this.notas = data;
+        this.http.getNotas().subscribe( data => {
+          this.notas = data;
         }
       )
+  }
+
+  toEditNota(nota:BlockNota):void{
+        localStorage.setItem("id", nota.id.toString());
+        this.router.navigate(["edit"]);
   }
 
 }

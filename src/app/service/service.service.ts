@@ -11,12 +11,22 @@ export class ServiceService {
   constructor(private http: HttpClient) { }
 
   url = 'http://localhost:8080/blocknotas/';
-
+  
   getNotas() {
     return this.http.get<BlockNota[]>(this.url);
   }
 
   createNote(blocknota: BlockNota){
     return this.http.post<BlockNota>(this.url, blocknota);
+  }
+
+  getNotaById(id:number){
+    let pathUri = this.url + id;
+    return this.http.get<BlockNota>(pathUri);
+  }
+
+  updateBlockNota(blockNota:BlockNota){
+    let pathUri = this.url + blockNota.id;
+    return this.http.put<BlockNota>(pathUri, blockNota);
   }
 }

@@ -1,14 +1,18 @@
 <div class="container">
     <h1>TODAS LAS NOTAS</h1>
     <div class="row">
-        <div class="card bg-light mb-3 ml-3" style="max-width: 18rem;" *ngFor="let nota of notas">
-            <div class="card-header"><b>{{nota.title}}</b></div>
-            <div class="card-body">
-              
-              <p class="card-text">{{nota.description}}</p>
-              <p> {{nota.last_modified}}</p>
-              <button class="btn btn-sm btn-primary float-right">ver más</button>
-            </div>
+        <div 
+            class="card bg-light mb-3 ml-3" 
+            style="width: 18rem;" 
+            *ngFor="let nota of notas">
+              <div class="card-header"><b>{{nota.title}}</b></div>
+              <div class="card-body">
+                
+                <p class="card-text">{{nota.description}}</p>
+                <p> {{nota.modified}}</p>
+                <button (click)="toEditNota(nota)" class="btn btn-sm btn-primary float-right">Editar</button>
+                <button class="btn btn-sm btn-secondary ">Eliminar</button>
+              </div>
           </div>
                    
     </div>
