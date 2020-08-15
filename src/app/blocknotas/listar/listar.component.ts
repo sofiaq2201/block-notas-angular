@@ -11,10 +11,10 @@ import { BlockNota } from '../../modelo/BlockNota';
 export class ListarComponent implements OnInit {
 
   notas:BlockNota[];
-  constructor(private http:ServiceService, private router:Router) { }
+  constructor(private service:ServiceService, private router:Router) { }
 
   ngOnInit() {
-        this.http.getNotas().subscribe( data => {
+        this.service.getNotas().subscribe( data => {
           this.notas = data;
         }
       )
@@ -23,6 +23,13 @@ export class ListarComponent implements OnInit {
   toEditNota(nota:BlockNota):void{
         localStorage.setItem("id", nota.id.toString());
         this.router.navigate(["edit"]);
+  }
+  toDeleteNota(blocknota:BlockNota){
+    this.service.deleteBlockNota(blocknota)
+        .subscribe( data => {
+          this.notas = this.notas.filter( n => n!== blocknota);
+          alert("se elimino");
+        })
   }
 
 }
