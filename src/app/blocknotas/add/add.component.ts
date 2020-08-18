@@ -20,11 +20,19 @@ export class AddComponent implements OnInit {
     if(!blocknota.title){
       blocknota.title = "";
     }
-    this.service.createNote(blocknota)
+    if(!blocknota.description){ 
+      blocknota.description = "";
+    }
+    if(blocknota.description==""&&blocknota.title==""){
+      alert("Completa un campo");
+    }else{
+      this.service.createNote(blocknota)
       .subscribe(data => { 
         alert("se agrego con exito");
         this.router.navigate(["listar"]);
-      })
+      });
+    }
+    
   }
   
 

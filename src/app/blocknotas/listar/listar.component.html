@@ -1,17 +1,19 @@
 <div class="container">
-    <h1>TODAS LAS NOTAS</h1>
+   
     <div class="row">
         <div 
-            class="card bg-light mb-3 ml-3" 
+            class="card shadow-sm mb-3 ml-3" 
             style="width: 18rem;" 
             *ngFor="let nota of notas">
-              <div class="card-header"><b>{{nota.title}}</b></div>
+              <div 
+                *ngIf="!nota.title == ''"
+                class="card-header"><b>{{nota.title}}</b></div>
               <div class="card-body">
-                
                 <p class="card-text">{{nota.description}}</p>
-                <p> {{nota.modified}}</p>
-                <button (click)="toEditNota(nota)" class="btn btn-sm btn-primary float-right">Editar</button>
-                <button (click)="toDeleteNota(nota)" class="btn btn-sm btn-secondary ">Eliminar</button>
+              </div>
+              <div class="card-footer border">
+                <button (click)="toEditNota(nota)" class="btn btn-sm btn-warning float-right"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                <button (click)="toDeleteNota(nota)" class="btn btn-sm btn-danger float-right mr-1"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
               </div>
           </div>
                    

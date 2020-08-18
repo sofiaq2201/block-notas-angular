@@ -27,6 +27,9 @@ export class EditComponent implements OnInit {
   }
 
   updateNota(blocknota:BlockNota){
+    if(!blocknota.title) { blocknota.title = ""; }
+    if(!blocknota.description){ blocknota.description = "";}
+    
     this.service.updateBlockNota(blocknota)
       .subscribe( data => {
         this.blocknota = data;

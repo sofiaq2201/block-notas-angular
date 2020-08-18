@@ -16,6 +16,9 @@ export class ListarComponent implements OnInit {
   ngOnInit() {
         this.service.getNotas().subscribe( data => {
           this.notas = data;
+          this.notas.forEach(n => {
+            console.log(n.modified.toLocaleDateString);
+          });
         }
       )
   }
@@ -28,7 +31,7 @@ export class ListarComponent implements OnInit {
     this.service.deleteBlockNota(blocknota)
         .subscribe( data => {
           this.notas = this.notas.filter( n => n!== blocknota);
-          alert("se elimino");
+          alert("Se elimino");
         })
   }
 

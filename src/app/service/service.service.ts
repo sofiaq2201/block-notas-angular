@@ -27,7 +27,7 @@ export class ServiceService {
 
   updateBlockNota(blockNota:BlockNota){
     let pathUri = this.url + blockNota.id;
-    return this.http.put<BlockNota>(pathUri, blockNota);
+    return this.http.put<BlockNota>(this.url, blockNota);
   }
 
   deleteBlockNota(blocknota:BlockNota){
